@@ -40,4 +40,54 @@ public:
 		}
 		length++;
 	}
+
+
+	void pop_front() {
+		if (isEmpty()) {
+			throw std::runtime_error("List is empty");
+		}
+		head = head->next;
+		length--;
+	}
+
+	void pop_back() {
+		if (isEmpty()) {
+			throw std::runtime_error("List is empty");
+		}
+		if (length == 1) {
+			head = nullptr;
+		}
+		else {
+			auto current = head;
+			while (current->next && current->next->next) {
+				current = current->next;
+			}
+			current->next = nullptr;
+		}
+		length--;
+	}
+
+	T& at(size_t index) {
+		if (index >= length) {
+			throw std::out_of_range("Index out of range");
+		}
+		auto current = head;
+		for (size_t i = 0; i < index; i++) {
+			current = current->next;
+		}
+		return current->data;
+	}
+
+	int find(const T& value) const {
+		auto current = head;
+		int index = 0;
+		while (current) {
+			if (current->data == value) {
+				return index;
+			}
+			current = current->next;
+			index++;
+		}
+		return -1;
+	}
 };
