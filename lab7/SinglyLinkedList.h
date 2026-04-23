@@ -42,19 +42,26 @@ public:
 	}
 
 
-	void pop_front() {
+	T pop_front() {
 		if (isEmpty()) {
 			throw std::runtime_error("List is empty");
 		}
+		T poppedValue = head->data;
+
 		head = head->next;
 		length--;
+
+		return poppedValue;
 	}
 
-	void pop_back() {
+	T pop_back() {
 		if (isEmpty()) {
 			throw std::runtime_error("List is empty");
 		}
+		T poppedValue;
+
 		if (length == 1) {
+			poppedValue = head->data;
 			head = nullptr;
 		}
 		else {
@@ -62,9 +69,11 @@ public:
 			while (current->next && current->next->next) {
 				current = current->next;
 			}
+			poppedValue = current->next->data;
 			current->next = nullptr;
 		}
 		length--;
+		return poppedValue;
 	}
 
 	T& at(size_t index) {

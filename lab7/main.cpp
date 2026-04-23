@@ -25,13 +25,16 @@ int main() {
         sList.remove_at(1);
         std::cout << "After removing index 1: " << sList << "\n";
 
-        sList.pop_front();
+		int removedFront = sList.pop_front();
+		std::cout << "Popped front element: " << removedFront << "\n";
         std::cout << "After pop_front: " << sList << "\n";
 
-        sList.pop_back();
+		int removedBack = sList.pop_back();
+		std::cout << "Popped back element: " << removedBack << "\n";
         std::cout << "After pop_back: " << sList << "\n";
 
-        sList.pop_back();
+        int removedLast = sList.pop_back();
+		std::cout << "Popped last element: " << removedLast << "\n";
         std::cout << "After removing last element: " << sList << " (Size: " << sList.size() << ")\n\n";
 
 
@@ -52,8 +55,8 @@ int main() {
         dList.remove_at(4);
         std::cout << "After remove_at(last_index): " << dList << "\n";
 
-        dList.pop_back();
-        dList.pop_front();
+		std::cout << "Popped from back: " << dList.pop_front() << "\n";
+        std::cout << "Popped from front: " << dList.pop_front() << "\n";
         std::cout << "After pop_back and pop_front: " << dList << "\n\n";
 
         std::cout << "--- 3. Exceptions Testing (Negative Scenarios) ---\n";

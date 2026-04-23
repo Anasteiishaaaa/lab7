@@ -47,8 +47,10 @@ public:
         length++;
     }
 
-    void pop_front() {
+    T pop_front() {
         if (is_empty()) throw std::runtime_error("List is empty");
+        T poppedValue = head->data;
+
         if (length == 1) {
             head = tail = nullptr;
         }
@@ -57,10 +59,14 @@ public:
             head->prev.reset();
         }
         length--;
+
+		return poppedValue;
     }
 
-    void pop_back() {
+    T pop_back() {
         if (is_empty()) throw std::runtime_error("List is empty");
+		T poppedValue = tail->data;
+
         if (length == 1) {
             head = tail = nullptr;
         }
@@ -69,6 +75,8 @@ public:
             tail->next = nullptr;
         }
         length--;
+
+		return poppedValue;
     }
 
     T& at(size_t index) {
